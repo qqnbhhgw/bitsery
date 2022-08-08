@@ -320,7 +320,7 @@ namespace bitsery {
             auto size = traits::ContainerTraits<T>::size(obj);
             (void)maxSize; // unused in release
             assert(size <= maxSize);
-            details::writeSize(this->_adapter, size);
+            details::writeSize(this->_adapter, size, maxSize);
             procContainer(std::begin(obj), std::end(obj));
         }
 

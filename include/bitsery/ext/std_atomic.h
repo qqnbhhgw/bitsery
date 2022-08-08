@@ -25,6 +25,7 @@
 
 #include "../traits/core/traits.h"
 #include <atomic>
+#include <memory>
 
 namespace bitsery {
     namespace ext {

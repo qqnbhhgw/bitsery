@@ -28,7 +28,7 @@
 
 namespace bitsery {
 
-    template<typename Buffer, typename Config = DefaultConfig>
+    template<typename Buffer, typename Config = BigEndianConfig>
     class InputBufferAdapter: public details::InputAdapterBaseCRTP<InputBufferAdapter<Buffer,Config>> {
     public:
         friend details::InputAdapterBaseCRTP<InputBufferAdapter<Buffer,Config>>;
@@ -185,7 +185,7 @@ namespace bitsery {
         bool _overflowOnReadEndPos = true;
     };
 
-    template<typename Buffer, typename Config = DefaultConfig>
+    template<typename Buffer, typename Config = BigEndianConfig>
     class OutputBufferAdapter: public details::OutputAdapterBaseCRTP<OutputBufferAdapter<Buffer,Config>> {
     public:
         friend details::OutputAdapterBaseCRTP<OutputBufferAdapter<Buffer,Config>>;

@@ -47,6 +47,25 @@ namespace bitsery {
         static constexpr bool CheckDataErrors = true;
     };
 
+    struct BigEndianConfig {
+        // defines endianness of data that is read from input adapter and written to output adapter.
+        static constexpr EndiannessType Endianness = EndiannessType::BigEndian;
+        // these flags allow to improve deserialization performance if data is trusted
+        // enables/disables checks for buffer end or stream read errors in input adapter
+        static constexpr bool CheckAdapterErrors = true;
+        // enables/disables checks for other errors that can significantly affect performance
+        static constexpr bool CheckDataErrors = true;
+    };
+
+    struct LittleEndianConfig {
+        // defines endianness of data that is read from input adapter and written to output adapter.
+        static constexpr EndiannessType Endianness = EndiannessType::LittleEndian;
+        // these flags allow to improve deserialization performance if data is trusted
+        // enables/disables checks for buffer end or stream read errors in input adapter
+        static constexpr bool CheckAdapterErrors = true;
+        // enables/disables checks for other errors that can significantly affect performance
+        static constexpr bool CheckDataErrors = true;
+    };
 }
 
 #endif //BITSERY_COMMON_H
