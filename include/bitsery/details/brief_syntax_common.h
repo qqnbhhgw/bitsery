@@ -37,7 +37,7 @@ namespace bitsery {
                 details::IsFundamentalType<typename traits::ContainerTraits<T>::TValue>::value
                 && traits::ContainerTraits<T>::isResizable
         >::type * = nullptr>
-        void processContainer(S &s, T &c, size_t maxSize = std::numeric_limits<size_t>::max()) {
+        void processContainer(S &s, T &c, size_t maxSize = (std::numeric_limits<size_t>::max)()) {
             using TValue = typename traits::ContainerTraits<T>::TValue;
             s.template container<sizeof(TValue)>(c, maxSize);
         }
@@ -46,7 +46,7 @@ namespace bitsery {
                 !details::IsFundamentalType<typename traits::ContainerTraits<T>::TValue>::value
                 && traits::ContainerTraits<T>::isResizable
         >::type * = nullptr>
-        void processContainer(S &s, T &c, size_t maxSize = std::numeric_limits<size_t>::max()) {
+        void processContainer(S &s, T &c, size_t maxSize = (std::numeric_limits<size_t>::max)()) {
             s.container(c, maxSize);
         }
 
@@ -71,7 +71,7 @@ namespace bitsery {
 
         template<typename S, typename T, typename std::enable_if<
                 traits::ContainerTraits<T>::isResizable>::type * = nullptr>
-        void processText(S &s, T &c, size_t maxSize = std::numeric_limits<size_t>::max()) {
+        void processText(S &s, T &c, size_t maxSize = (std::numeric_limits<size_t>::max)()) {
             using TValue = typename traits::ContainerTraits<T>::TValue;
             s.template text<sizeof(TValue)>(c, maxSize);
         }
