@@ -89,24 +89,32 @@ namespace bitsery {
             switch (write_bytes_cnt)
             {
             case 1:
-                 uint8_t tmpSz1;
+            {
+                 uint8_t tmpSz1{};
                  r.template readBytes<1>(tmpSz1);
                  size = tmpSz1;
+            }
                  break;
             case 2:
-                 uint16_t tmpSz2 = 0;
+            {
+                 uint16_t tmpSz2{};
                  r.template readBytes<2>(tmpSz2);
                  size = tmpSz2;
+            }
                  break;
             case 4:
-                 uint32_t tmpSz3;
+            {
+                uint32_t tmpSz3{};
                  r.template readBytes<4>(tmpSz3);
                  size = tmpSz3;
+            }
                  break;
             case 8:
-                 uint64_t tmpSz4;
+            {
+                 uint64_t tmpSz4{};
                  r.template readBytes<8>(tmpSz4);
                  size = tmpSz4;
+            }
                  break;
             default:
                 break;
