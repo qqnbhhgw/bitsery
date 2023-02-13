@@ -290,9 +290,8 @@ namespace bitsery {
             static_assert(traits::ContainerTraits<T>::isResizable,
                           "use container(const T&, Fnc) overload without `maxSize` for static containers");
             auto size = traits::ContainerTraits<T>::size(obj);
-            (void)maxSize; // unused in release
             assert(size <= maxSize);
-            details::writeSize(this->_adapter, size);
+            details::writeSize(this->_adapter, size,maxSize);
             procContainer(std::begin(obj), std::end(obj), std::forward<Fnc>(fnc));
         }
 
@@ -304,9 +303,8 @@ namespace bitsery {
                           "use container(const T&) overload without `maxSize` for static containers");
             static_assert(VSIZE > 0, "");
             auto size = traits::ContainerTraits<T>::size(obj);
-            (void)maxSize; // unused in release
             assert(size <= maxSize);
-            details::writeSize(this->_adapter, size);
+            details::writeSize(this->_adapter, size,maxSize);
 
             procContainer<VSIZE>(std::begin(obj), std::end(obj), std::integral_constant<bool, traits::ContainerTraits<T>::isContiguous>{});
         }
@@ -318,9 +316,8 @@ namespace bitsery {
             static_assert(traits::ContainerTraits<T>::isResizable,
                           "use container(const T&) overload without `maxSize` for static containers");
             auto size = traits::ContainerTraits<T>::size(obj);
-            (void)maxSize; // unused in release
             assert(size <= maxSize);
-            details::writeSize(this->_adapter, size, maxSize);
+            details::writeSize(this->_adapter, size,maxSize);
             procContainer(std::begin(obj), std::end(obj));
         }
 
